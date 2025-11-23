@@ -1,6 +1,8 @@
 import AppleAuthButton from "@/components/auth/AppleAuthButton";
 import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
-import { Fonts } from "@/constants/theme";
+import SmoothInfiniteScroll from "@/components/SmoothInfiniteScroll";
+import { Colors, Fonts } from "@/constants/theme";
+import { LinearGradient } from "expo-linear-gradient";
 import { Image, Linking, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 
@@ -12,7 +14,27 @@ export default function Index() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.infiniteScrollContainer}></View>
+      <View style={styles.infiniteScrollContainer}>
+        <View>
+          <SmoothInfiniteScroll scrollDirection="down" iconSet="set1" />
+        </View>
+        <View>
+          <SmoothInfiniteScroll scrollDirection="up" iconSet="set2" />
+        </View>
+        <View>
+          <SmoothInfiniteScroll scrollDirection="down" iconSet="set3" />
+        </View>
+        <LinearGradient
+          colors={['transparent', '#fff']}
+          style={{
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            bottom: 0,
+            height: 200,
+          }}
+        />
+      </View>
 
       <View style={styles.contentContainer}>
         <Image source={require('@/assets/images/wolt-logo.png')} style={styles.brandLogo} />
@@ -70,11 +92,11 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.brandBlack,
     textAlign: 'center',
     marginBottom: 50,
-    lineHeight: 40,
+    lineHeight: 38,
   },
   buttonContainer: {
     gap: 12,
-    width: "100%",
+    width: '100%',
   },
   otherButton: {
     backgroundColor: '#f0f0f0',
@@ -86,8 +108,8 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   otherButtonText: {
-    color: '#666',
-    fontSize: 18,
+    color: Colors.muted,
+    fontSize: 17,
     fontWeight: '600',
   },
   privacyContainer: {
@@ -95,7 +117,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   privacyText: {
-    fontSize: 13,
+    fontSize: 12,
     color: '#999',
     textAlign: 'center',
     lineHeight: 18,
@@ -106,5 +128,11 @@ const styles = StyleSheet.create({
   },
   infiniteScrollContainer: {
     flex: 0.8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 4,
+    position: 'relative',
+    overflow: 'hidden',
   },
 });
