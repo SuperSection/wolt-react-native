@@ -71,7 +71,7 @@ const SmoothInfiniteScroll = ({
         }, 1000 / FRAME_RATE);
 
         return () => clearInterval(interval);
-    }, [scrollDirection]);
+    }, [scrollDirection, totalContentHeight]);
 
     useAnimatedReaction(() => scrollY.value, (value) => {
         if (scrollDirection === 'down') {
