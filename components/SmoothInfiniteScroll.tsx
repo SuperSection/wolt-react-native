@@ -89,7 +89,7 @@ const SmoothInfiniteScroll = ({
                 scrollTo(scrollRef, 0, value, false);
             }
         }
-    });
+    }, [scrollDirection, totalContentHeight]);
 
 
     return (
